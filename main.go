@@ -4,16 +4,22 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"math"
 	"os"
 )
 
 func main() {
+	// Ensure we have valid amount of letters.
 	letters, err := getValidLettersInput()
 	if err != nil {
 		log.Fatal(err)
 	}
 
+	// High bound of spaces we can inject into our permutation strings.
+	maxSpacesNum := getMaxNumOfSpaces(letters)
+
 	fmt.Println(letters)
+	fmt.Println(maxSpacesNum)
 }
 
 // Validate the user is entering a character string with a length of at least 3.
@@ -28,4 +34,13 @@ func getValidLettersInput() (string, error) {
 	} else {
 		return "", errors.New("Please enter at least three letters for anagram generation.")
 	}
+}
+
+func getMaxNumOfSpaces(letters string) float64 {
+	if len(letters) == 3 {
+		return 0
+	}
+
+	ratio := float64(len(letters) / 2)
+	return (math.Floor(ratio))
 }
