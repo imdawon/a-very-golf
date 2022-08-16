@@ -1,18 +1,31 @@
 package main
 
 import (
+	"errors"
 	"fmt"
+	"log"
 	"os"
 )
 
 func main() {
-	// get word string input
+	letters, err := getValidLettersInput()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(letters)
+}
+
+// Validate the user is entering a character string with a length of at least 3.
+func getValidLettersInput() (string, error) {
 	if len(os.Args) > 1 {
 		letters := os.Args[1]
 		if len(letters) >= 3 {
-			fmt.Println(letters)
+			return letters, nil
 		} else {
-			fmt.Println("Please supply at least 3 letters for anagram generation.")
+			return "", errors.New("Please enter at least three letters for anagram generation.")
 		}
+	} else {
+		return "", errors.New("Please enter at least three letters for anagram generation.")
 	}
 }
