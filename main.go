@@ -1,6 +1,7 @@
 package main
 
 import (
+	"a-very-golf/hashmap"
 	"errors"
 	"fmt"
 	"log"
@@ -18,8 +19,11 @@ func main() {
 	// High bound of spaces we can inject into our permutation strings.
 	maxSpacesNum := getMaxNumOfSpaces(letters)
 
-	fmt.Println(letters)
-	fmt.Println(maxSpacesNum)
+	fmt.Printf("Letters: %s\n", letters)
+	fmt.Printf("Max spaces count: %f \n", maxSpacesNum)
+	validWords := hashmap.GetValidWords()
+
+	fmt.Printf("valid word?: %d", validWords["assess2"])
 }
 
 // Validate the user is entering a character string with a length of at least 3.
