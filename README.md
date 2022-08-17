@@ -1,6 +1,4 @@
 # a-very-golf
-anagram generator
-
 Riley Poole inspired anagram generator.
 
 run `go build` to compile.
