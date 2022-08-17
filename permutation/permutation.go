@@ -27,7 +27,7 @@ func FindAnagramCandidates(curPermutation string, i int, n int) {
 				hashmap.AnagramCandidates[anagram.RemoveMultipleAdjacentSpaces(curPermutation)] = 1
 			}
 		} else {
-			continue
+			break
 		}
 
 		FindAnagramCandidates(curPermutation, i+1, n)
