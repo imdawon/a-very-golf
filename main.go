@@ -24,23 +24,21 @@ func main() {
 
 	hashmap.AnagramCandidates = make(map[string]int)
 
-	// High bound of spaces we can inject into our permutation strings.
+	// High bound count of spaces we can inject into our permutation strings.
 	maxSpaces := anagram.GetMaxNumOfSpaces(unsortedAnagram)
 
+	// Inject max number of spaces into our user input string.
 	unsortedAnagramWithSpaces := anagram.AddSpaces(unsortedAnagram, int(maxSpaces))
 
-	fmt.Printf("Letters: %s\n", unsortedAnagramWithSpaces)
-	fmt.Printf("Max spaces count: %f\n", maxSpaces)
-
-	fmt.Printf("valid word?: %d\n", hashmap.ValidWords["assess"])
-	fmt.Printf("stripped adjacent spaces: %s\n", anagram.RemoveMultipleAdjacentSpaces(" |test      test2      |"))
-
+	// Generate anagrams and extract valid strings of English words.
 	permutation.FindAnagramCandidates(unsortedAnagramWithSpaces, 0, len(unsortedAnagramWithSpaces))
 
+	// Print anagrams.
 	if len(hashmap.AnagramCandidates) > 0 {
 		for anagram := range hashmap.AnagramCandidates {
 			fmt.Println(anagram)
 		}
+		// We didn't find any anagrams.
 	} else {
 		fmt.Println("Not a single anagram was found. oof.")
 	}

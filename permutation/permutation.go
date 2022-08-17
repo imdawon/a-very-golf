@@ -6,33 +6,34 @@ import (
 	"strings"
 )
 
-func FindAnagramCandidates(str string, i, n int) {
-	// base condition
+func FindAnagramCandidates(curPermutation string, i int, n int) {
+	// Base case.
 	if i == n-1 {
 		return
 	}
 
-	// process each character of the remaining string
+	// Process each character of the remaining string.
 	for j := i; j < n; j++ {
-		// swap character at index i with current character
-		str = swap(str, i, j)
+		// Swap char at index i with current char.
+		curPermutation = swap(curPermutation, i, j)
 
-		_, hashExists := hashmap.AnagramCandidates[str]
+		_, hashExists := hashmap.AnagramCandidates[curPermutation]
 
 		if !hashExists {
-			permutationWords := strings.Split(str, " ")
+			// Split on spaces to invidually check if each word is a valid English word.
+			permutationWords := strings.Split(curPermutation, " ")
 			if isValidPermutation(permutationWords, hashmap.ValidWords) {
-				hashmap.AnagramCandidates[anagram.RemoveMultipleAdjacentSpaces(str)] = 1
+				// Add valid phrase to our candidates hashmap.
+				hashmap.AnagramCandidates[anagram.RemoveMultipleAdjacentSpaces(curPermutation)] = 1
 			}
 		} else {
 			continue
 		}
 
-		// recursion for string [i+1:n]
-		FindAnagramCandidates(str, i+1, n)
+		FindAnagramCandidates(curPermutation, i+1, n)
 
-		// backtrack (restore the string to its original state)
-		str = swap(str, i, j)
+		// Restore the string to its original state.
+		curPermutation = swap(curPermutation, i, j)
 	}
 }
 
