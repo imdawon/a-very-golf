@@ -6,11 +6,14 @@ import (
 	"strings"
 )
 
+var Iterations = 0
+
 func FindAnagramCandidates(curPermutation string, i int, n int) {
 	// Base case.
 	if i == n-1 {
 		return
 	}
+	Iterations++
 
 	// Process each character of the remaining string.
 	for j := i; j < n; j++ {
@@ -27,7 +30,7 @@ func FindAnagramCandidates(curPermutation string, i int, n int) {
 				hashmap.AnagramCandidates[anagram.RemoveMultipleAdjacentSpaces(curPermutation)] = 1
 			}
 		} else {
-			break
+			return
 		}
 
 		FindAnagramCandidates(curPermutation, i+1, n)
