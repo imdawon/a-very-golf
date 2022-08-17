@@ -18,15 +18,16 @@ func AddSpaces(unsortedAnagram string, maxSpaces int) string {
 
 // Validate the user is entering a character string with a length of at least 3.
 func IsValidInput() (bool, error) {
+	usageMessage := "usage: a-very-golf.exe aeglorvy.\nPlease enter at least three letters for anagram generation."
 	if len(os.Args) > 1 {
 		letters := os.Args[1]
 		if len(letters) >= 3 {
 			return true, nil
 		} else {
-			return false, errors.New("Please enter at least three letters for anagram generation.")
+			return false, errors.New(usageMessage)
 		}
 	} else {
-		return false, errors.New("Please enter at least three letters for anagram generation.")
+		return false, errors.New(usageMessage)
 	}
 }
 
