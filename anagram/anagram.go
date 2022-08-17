@@ -42,13 +42,3 @@ func GetMaxNumOfSpaces(letters string) float64 {
 func RemoveMultipleAdjacentSpaces(str string) string {
 	return strings.Join(strings.Fields(str), " ")
 }
-
-func IsValidPermutation(str []string, validWords map[string]int) bool {
-	for _, word := range str {
-		_, isValidWord := validWords[word]
-		if !isValidWord {
-			return false
-		}
-	}
-	return true
-}
