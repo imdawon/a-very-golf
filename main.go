@@ -10,6 +10,8 @@ import (
 	"time"
 )
 
+var Iterations = 0
+
 func main() {
 	// Ensure user entered valid unsorted anagram.
 	success, err := anagram.IsValidInput()
@@ -47,7 +49,7 @@ func main() {
 				wordsToPrint = nil
 				// Print all remaining words if we are iterating over the last entry in `AnagramCandidates`.
 			} else if anagramsCount == i {
-				fmt.Println(assembleAnagramsOnSameLine(wordsToPrint))
+				fmt.Println(assembleAnagramsOnSameLine(wordsToPrint) + "\n")
 			}
 			i++
 		}
@@ -57,7 +59,9 @@ func main() {
 		fmt.Println("Not a single anagram was found. oof.")
 	}
 	timeFinish := time.Now()
+
 	fmt.Printf("Time elapsed: %s\n", timeFinish.Sub(timeStart))
+	fmt.Printf("Iterations: %d", permutation.Iterations)
 }
 
 // Assembles however many words are in the given slice on one string.
@@ -73,7 +77,7 @@ func assembleAnagramsOnSameLine(anagrams []string) string {
 		if wordsOnLine == 0 {
 			output = anagram
 		} else {
-			output += "\t" + anagram
+			output += " | " + anagram
 		}
 		wordsOnLine++
 	}
