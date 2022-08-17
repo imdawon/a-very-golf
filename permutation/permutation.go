@@ -2,14 +2,13 @@ package permutation
 
 import (
 	"a-very-golf/anagram"
-	"fmt"
+	"a-very-golf/hashmap"
+	"strings"
 )
 
 func GetAnagramCandidates(str string, i, n int) map[string]int {
 	// base condition
 	if i == n-1 {
-		fmt.Println(str)
-
 		return nil
 	}
 
@@ -23,7 +22,10 @@ func GetAnagramCandidates(str string, i, n int) map[string]int {
 		_, hashExists := anagramCandidates[str]
 
 		if !hashExists {
-			anagramCandidates[anagram.RemoveMultipleAdjacentSpaces(str)] = 1
+			permutationWords := strings.Split(str, " ")
+			if isValidPermutation(permutationWords, hashmap.ValidWords) {
+				anagramCandidates[anagram.RemoveMultipleAdjacentSpaces(str)] = 1
+			}
 		} else {
 			continue
 		}
@@ -50,4 +52,14 @@ func swap(s string, i, j int) string {
 		}
 	}
 	return string(result)
+}
+
+func isValidPermutation(permutationWords []string, validWords map[string]int) bool {
+	for _, word := range permutationWords {
+		_, isValidWord := validWords[word]
+		if !isValidWord && word != "" {
+			return false
+		}
+	}
+	return true
 }

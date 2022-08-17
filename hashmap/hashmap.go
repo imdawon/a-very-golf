@@ -6,8 +6,10 @@ import (
 	"os"
 )
 
+var ValidWords = getValidWords()
+
 // Read local full dictionary file and return a hashmap with the entries.
-func GetValidWords() map[string]int {
+func getValidWords() map[string]int {
 	validWords := make(map[string]int)
 
 	fileHandle, err := os.Open("fulldict.txt")

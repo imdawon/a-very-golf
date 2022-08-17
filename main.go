@@ -9,8 +9,6 @@ import (
 	"os"
 )
 
-var validWords = hashmap.GetValidWords()
-
 func main() {
 	// Ensure user entered valid unsorted anagram.
 	success, err := anagram.IsValidInput()
@@ -32,13 +30,13 @@ func main() {
 	fmt.Printf("Letters: %s\n", unsortedAnagramWithSpaces)
 	fmt.Printf("Max spaces count: %f\n", maxSpaces)
 
-	fmt.Printf("valid word?: %d\n", validWords["assess"])
-	fmt.Printf("stripped adjacent spaces: %s\n", anagram.RemoveMultipleAdjacentSpaces(" |test  test2  |"))
+	fmt.Printf("valid word?: %d\n", hashmap.ValidWords["assess"])
+	fmt.Printf("stripped adjacent spaces: %s\n", anagram.RemoveMultipleAdjacentSpaces(" |test      test2      |"))
 
 	anagramCandidates := permutation.GetAnagramCandidates(unsortedAnagramWithSpaces, 0, len(unsortedAnagramWithSpaces))
 
 	if len(anagramCandidates) > 0 {
-		for _, anagram := range anagramCandidates {
+		for anagram := range anagramCandidates {
 			fmt.Println(anagram)
 		}
 	} else {
