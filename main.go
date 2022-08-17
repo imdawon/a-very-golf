@@ -22,6 +22,8 @@ func main() {
 		unsortedAnagram = os.Args[1]
 	}
 
+	hashmap.AnagramCandidates = make(map[string]int)
+
 	// High bound of spaces we can inject into our permutation strings.
 	maxSpaces := anagram.GetMaxNumOfSpaces(unsortedAnagram)
 
@@ -33,10 +35,10 @@ func main() {
 	fmt.Printf("valid word?: %d\n", hashmap.ValidWords["assess"])
 	fmt.Printf("stripped adjacent spaces: %s\n", anagram.RemoveMultipleAdjacentSpaces(" |test      test2      |"))
 
-	anagramCandidates := permutation.GetAnagramCandidates(unsortedAnagramWithSpaces, 0, len(unsortedAnagramWithSpaces))
+	permutation.FindAnagramCandidates(unsortedAnagramWithSpaces, 0, len(unsortedAnagramWithSpaces))
 
-	if len(anagramCandidates) > 0 {
-		for anagram := range anagramCandidates {
+	if len(hashmap.AnagramCandidates) > 0 {
+		for anagram := range hashmap.AnagramCandidates {
 			fmt.Println(anagram)
 		}
 	} else {
