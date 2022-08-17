@@ -52,14 +52,12 @@ func main() {
 			i++
 		}
 
-		timeFinish := time.Now()
-		fmt.Printf("Time elapsed: %s\n", timeFinish.Sub(timeStart))
-
 		// We didn't find any anagrams.
 	} else {
 		fmt.Println("Not a single anagram was found. oof.")
 	}
-
+	timeFinish := time.Now()
+	fmt.Printf("Time elapsed: %s\n", timeFinish.Sub(timeStart))
 }
 
 // Assembles however many words are in the given slice on one string.
