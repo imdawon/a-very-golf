@@ -14,7 +14,7 @@ var AnagramCandidates map[string]int
 func getValidWords() map[string]int {
 	validWords := make(map[string]int)
 
-	fileHandle, err := os.Open("fulldict.txt")
+	fileHandle, err := os.Open("top100kenglishwords.txt")
 	if err != nil {
 		fmt.Println(err)
 	}

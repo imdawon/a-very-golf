@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"time"
 )
 
 func main() {
@@ -24,6 +25,7 @@ func main() {
 
 	hashmap.AnagramCandidates = make(map[string]int)
 
+	timeStart := time.Now()
 	// Generate anagrams and extract valid strings of English words.
 	permutation.FindAnagramCandidates(unsortedAnagram, 0, len(unsortedAnagram))
 
@@ -32,6 +34,10 @@ func main() {
 		for anagram := range hashmap.AnagramCandidates {
 			fmt.Println(anagram)
 		}
+
+		timeFinish := time.Now()
+		fmt.Printf("Time elapsed: %s\n", timeFinish.Sub(timeStart))
+
 		// We didn't find any anagrams.
 	} else {
 		fmt.Println("Not a single anagram was found. oof.")
