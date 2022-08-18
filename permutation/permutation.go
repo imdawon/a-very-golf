@@ -20,7 +20,7 @@ func FindAnagramCandidates(curPermutation string, i int, n int) {
 		// Swap char at index i with current char.
 		curPermutation = swap(curPermutation, i, j)
 
-		_, hashExists := hashmap.AnagramCandidates[curPermutation]
+		_, hashExists := hashmap.SeenAnagrams[curPermutation]
 
 		if !hashExists {
 			// Split on spaces to invidually check if each word is a valid English word.
@@ -28,6 +28,8 @@ func FindAnagramCandidates(curPermutation string, i int, n int) {
 			if isValidPermutation(permutationWords, hashmap.ValidWords) {
 				// Add valid phrase to our candidates hashmap.
 				hashmap.AnagramCandidates[anagram.RemoveMultipleAdjacentSpaces(curPermutation)] = 1
+
+				hashmap.SeenAnagrams[curPermutation] = 1
 			}
 		} else {
 			return
