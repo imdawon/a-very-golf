@@ -23,5 +23,3 @@ add as many spaces to your anagram as you wish. it doesn't add spaces automatica
 inputting more than 10 characters will drastically increase anagram counts due to recursive calls.
 
 you will start waiting minutes or hours depending on how many characters you go beyond 10.
-
-example output:
