@@ -27,7 +27,10 @@ func main() {
 
 	hashmap.AnagramCandidates = make(map[string]int)
 
+	hashmap.SeenAnagrams = make(map[string]int)
+
 	timeStart := time.Now()
+	fmt.Printf("Starting at %d:%d.%d\n", timeStart.Local().Hour(), timeStart.Local().Minute(), timeStart.Local().Second())
 	// Generate anagrams and extract valid strings of English words.
 	permutation.FindAnagramCandidates(unsortedAnagram, 0, len(unsortedAnagram))
 
@@ -59,6 +62,8 @@ func main() {
 		fmt.Println("Not a single anagram was found. oof.")
 	}
 	timeFinish := time.Now()
+
+	fmt.Printf("Finished at %d:%d.%d\n", timeFinish.Local().Hour(), timeFinish.Local().Minute(), timeFinish.Local().Second())
 
 	fmt.Printf("Time elapsed: %s\n", timeFinish.Sub(timeStart))
 	fmt.Printf("Iterations: %d", permutation.Iterations)
