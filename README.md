@@ -7,7 +7,7 @@ usage: ./binary-name "aefglorvy "
 
 ### example output
 ```
-./a-glove-fry.exe "aefglorvyle "
+./a-very-golf.exe "aefglorvyle "
 frage volley | floe gravely | folly egrave | forgave yell | valley forge | yell forgave
 flavor elegy | frage lovely | leafy grovel | voyager fell | gravely floe | gravelly foe
 grovel leafy | egrave folly | elegy flavor | fell voyager | foe gravelly | forge valley
