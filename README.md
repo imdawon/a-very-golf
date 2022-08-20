@@ -3,7 +3,7 @@ Riley Poole inspired anagram generator.
 
 run `go build` to compile.
 
-usage: binary-name "aefglorvy "
+usage: ./binary-name "aefglorvy "
 
 ### example output
 ```
